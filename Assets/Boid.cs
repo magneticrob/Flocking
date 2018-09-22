@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour {
 
+	float friendRadius = 20;
 	float speed = 0.2f;
 	int thinkTimer = 0;
 
 	Vector3 moveTo;
-	Boid[] friends;
+	ArrayList friends;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +38,9 @@ public class Boid : MonoBehaviour {
 		moveTo = Vector2.ClampMagnitude (moveTo, speed);
 		transform.position = transform.position + moveTo;
 
-		transform.up = (moveTo * 5) - transform.position;
+		transform.up = (moveTo * 100) - transform.position;
+
+//		Debug.DrawLine (transform.position, moveTo * 100);
 	}
 
 	Vector2 getAverageDirection() {
@@ -65,8 +68,24 @@ public class Boid : MonoBehaviour {
 	}
 
 	void getFriends() {
-		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 10);
-		print (hitColliders);
+		ArrayList nearby = new ArrayList();
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 100);
+		print ("Collider length: " + colliders.Length);
+
+		for (int i = 0; i < colliders.Length; i++)
+		{
+			Boid test = (Boid)colliders [i].gameObject.GetComponent<Boid>();
+			if (test == this) {
+				continue;
+			}
+
+			if (Mathf.Abs(test.transform.position.x - this.transform.position.x) < friendRadius && 
+				Mathf.Abs(test.transform.position.y - this.transform.position.y) < friendRadius) {
+				nearby.Add(test);
+			}
+		}
+
+		friends = nearby;
 	}
 
 	void increment () {
