@@ -1,17 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Movement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Boid.cs">
     <Files>
-      <File FileName="Assets/Movement.cs" Line="17" Column="44" />
-      <File FileName="../Roguelike/Platformer/Assets/Standard Assets/2D/Scripts/PlatformerCharacter2D.cs" Line="116" Column="37" />
+      <File FileName="Assets/Boid.cs" Line="40" Column="15" />
+      <File FileName="../Roguelike/Platformer/Assets/Standard Assets/2D/Scripts/PlatformerCharacter2D.cs" Line="28" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Top Down Space Shooter" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Movement.cs" selected="True" />
-            </Node>
+            <Node name="Assembly-CSharp" expanded="True" />
             <Node name="Assembly-CSharp-Editor-firstpass" expanded="True" />
             <Node name="Assembly-CSharp-firstpass" expanded="True" />
           </Node>

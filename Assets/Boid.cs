@@ -36,6 +36,8 @@ public class Boid : MonoBehaviour {
 		moveTo = align + avoidDirection + avoidObjectsDirection + noise + cohesion;
 		moveTo = Vector2.ClampMagnitude (moveTo, speed);
 		transform.position = transform.position + moveTo;
+
+		transform.up = (moveTo * 5) - transform.position;
 	}
 
 	Vector2 getAverageDirection() {
@@ -45,7 +47,7 @@ public class Boid : MonoBehaviour {
 	}
 
 	Vector2 getAvoidDirection() {
-		Vector2 avoidDirection = new Vector2 (0.01f, 0.0f);
+		Vector2 avoidDirection = new Vector2 (-0.05f, 0.0f);
 
 		return avoidDirection;
 	}
@@ -63,7 +65,8 @@ public class Boid : MonoBehaviour {
 	}
 
 	void getFriends() {
-		print ("GETTING FRIENDS!");
+		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 10);
+		print (hitColliders);
 	}
 
 	void increment () {
